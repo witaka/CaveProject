@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index', as: :root
   resources :questions
   resources :quizzes
+  resources :leaderboard, only: [:index]
 end
