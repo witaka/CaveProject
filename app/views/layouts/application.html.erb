@@ -15,8 +15,13 @@
       <%= link_to 'New Quiz', new_quiz_path %>
       |
       <%= link_to 'Quizzes', quizzes_path %>
+
       |
       <%= link_to 'Leaderboard', leaderboard_index_path %>
-    <%= yield %>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
+    
   </body>
 </html>
