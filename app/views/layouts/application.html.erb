@@ -10,11 +10,11 @@
   </head>
   <body>
 
-      <%= link_to 'Home'  %>
+      <%= link_to 'Home', root_path %>
       |
-      <%= link_to 'New Quiz' %>
+      <%= link_to 'New Quiz', new_quiz_path %>
       |
-      <%= link_to 'Quizzes' %>
+      <%= link_to 'Quizzes', quizzes_path %>
     <%= yield %>
   </body>
 </html>
