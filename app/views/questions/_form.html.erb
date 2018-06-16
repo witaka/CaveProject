@@ -1,0 +1,14 @@
+<%= simple_form_for @question do |f| %>
+  <%= f.input :body %>
+  <label for="answer1" style="color: green;">Correct Answer</label>
+  <input name="answer1" id="answer1"> <br>
+  <label for="answer2" style="color: red;"> Fake Answer 1</label>
+  <input name="answer2" id="answer2"> <br>
+  <label for="answer3" style="color: red;"> Fake Answer 2</label>
+  <input name="answer3" id="answer3"> <br>
+  <label for="answer4" style="color: red;"> Fake Answer 3</label>
+  <input name="answer4" id="answer4"> <br>
+  <%= f.button :submit %>
+<% end %>
+
+<form>
