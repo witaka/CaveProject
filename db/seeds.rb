@@ -1,6 +1,6 @@
 PASSWORD = "password"
 
-# User.destroy_all
+User.destroy_all
 Answer.destroy_all
 Question.destroy_all
 Quiz.destroy_all
@@ -40,22 +40,22 @@ Quiz.destroy_all
 
 end
 
-# 15.times.each do
+15.times.each do
     
-#         first_name = Faker::Name.first_name
-#         last_name = Faker::Name.last_name
+        first_name = Faker::Name.first_name
+        last_name = Faker::Name.last_name
       
-#         User.create(
-#         first_name: first_name,
-#         last_name: last_name,
-#         email:"#{first_name.downcase}.#{last_name.downcase}@nasa.gov",
-#         password: PASSWORD,
-#         admin: false,
-#         pts: rand(0..30)*500,
-#         approved: true
-#     )
+        User.create(
+        first_name: first_name,
+        last_name: last_name,
+        email:"#{first_name.downcase}.#{last_name.downcase}@nasa.gov",
+        password: PASSWORD,
+        admin: false,
+        pts: rand(0..30)*500,
+        approved: true
+    )
 end
-#users = User.all
+users = User.all
 quizzes = Quiz.all
 questions = Question.all
 answers = Answer.all
