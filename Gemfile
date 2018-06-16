@@ -33,6 +33,8 @@ gem 'pry-doc'
 gem 'hirb'
 gem 'faker'
 gem 'simple_form'
+gem 'cancancan'
+gem 'devise'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
