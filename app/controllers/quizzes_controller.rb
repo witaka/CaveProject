@@ -10,7 +10,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     if @quiz.save
-      redirect_to quiz_path(@quiz)
+      redirect_to edit_quiz_path(@quiz)
     else
       render :new
     end
@@ -25,6 +25,7 @@ class QuizzesController < ApplicationController
   end
 
   def edit
+    @question = Question.new
   end
 
   def update
