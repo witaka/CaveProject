@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
   resources :quizzes
   resources :leaderboard, only: [:index]
+
+  resources :users, only: [:new, :create]
 end

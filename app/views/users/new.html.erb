@@ -1,0 +1,23 @@
+<%= simple_form_for (@user) do |f| %>
+  <% if @user.errors.any? %>
+    <p>
+      <%= @user.errors.full_messages.join(', ') %>
+    </p>
+  <% end %>
+
+    <%= f.input :first_name %>
+
+    <%= f.input :last_name %>
+
+    <%= f.input :email %>
+
+    <%= f.input :password %>
+    <!-- <div>
+      <input type="password" name="password" />
+    </div> -->
+
+    <%= f.input :password_confirmation %>
+
+    <%= f.submit "Sign Up", class: 'btn btn-primary' %>
+
+<% end %>
