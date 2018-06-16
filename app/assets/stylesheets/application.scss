@@ -14,4 +14,25 @@
  *= require_self
  */
 
- @import 'bootstrap';
+@import "bootstrap";
+
+.navbar a {
+  color: white;
+  font-size: 2vw;
+}
+
+.navbar a:hover {
+  color: #ddd;
+  font-size: 2vw;
+  text-decoration: none;
+}
+
+.navbar ul li {
+  margin: 0 20px 20px 0;
+  vertical-align: top;
+}
+
+.navbar ul li a {
+  margin: 0 20px 20px 0;
+  vertical-align: top;
+}
