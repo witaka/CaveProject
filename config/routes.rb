@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :answers
   end
   resources :quizzes
+  resources :leaderboard, only: [:index]
 end
