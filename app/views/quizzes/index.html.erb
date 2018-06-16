@@ -1,0 +1,5 @@
+  <ul>
+    <% @quizzes.each do |quiz| %>
+       <%= link_to(quiz.title,quiz_path(quiz)) %>
+    <% end %>
+  </ul>
