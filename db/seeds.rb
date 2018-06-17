@@ -4,6 +4,7 @@ User.destroy_all
 Answer.destroy_all
 Question.destroy_all
 Quiz.destroy_all
+Result.destroy_all
 
 12.times.each do 
   quiz = Quiz.create(
@@ -40,39 +41,45 @@ Quiz.destroy_all
 
 end
 
-16.times.each do
-    Result.create(
-        tries: rand(1..5),
-        score: rand(0..100),
-        user: User.sample,
-        quiz: Quiz.sample,
-        claimed: rand(0..10)>5
-    )
-end
 
 15.times.each do
-    
-        first_name = Faker::Name.first_name
-        last_name = Faker::Name.last_name
-      
-        User.create(
-        first_name: first_name,
-        last_name: last_name,
-        email:"#{first_name.downcase}.#{last_name.downcase}@nasa.gov",
-        password: PASSWORD,
-        admin: false,
-        points: rand(0..30)*500,
-        approved: true
+  
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  
+  User.create(
+    first_name: first_name,
+    last_name: last_name,
+    email:"#{first_name.downcase}.#{last_name.downcase}@nasa.gov",
+    password: PASSWORD,
+    admin: false,
+    points: rand(0..30)*500,
+    approved: true
     )
-end
-users = User.all
-quizzes = Quiz.all
-questions = Question.all
-answers = Answer.all
+  end
+  16.times.each do
+      sample_quiz = Quiz.all.sample
+      sample_user = User.all.sample
+      Result.create(
+          tries: rand(1..5),
+          score: rand(0..100),
+          user: sample_user,
+          quiz: sample_quiz,
+          claimed: rand(0..10)>5
+      )
+  end
+
+
+  users = User.all
+  quizzes = Quiz.all
+  questions = Question.all
+  answers = Answer.all
+  results = Result.all
 
 puts  "Created #{quizzes.count} quizzes"
 puts  "Created #{questions.count} questions"
 puts  "Created #{answers.count} answers"
 puts  "Created #{users.count} users"
+puts  "Created #{results.count} results"
 
 
