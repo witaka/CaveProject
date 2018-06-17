@@ -70,14 +70,13 @@ end
   end
 # admin user:
 super_user = User.create(
-    first_name: Quiz,
-    last_name: Master,
+    first_name: "Quiz",
+    last_name: "Master",
     email:"quiz.master@nasa.gov",
     password: PASSWORD,
     admin: true,
     points: 0,
     approved: true
-    admin: true
 )
 
   users = User.all
@@ -91,5 +90,3 @@ puts  "Created #{questions.count} questions"
 puts  "Created #{answers.count} answers"
 puts  "Created #{users.count} users"
 puts  "Created #{results.count} results"
-
-
