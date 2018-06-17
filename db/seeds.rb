@@ -54,7 +54,7 @@ end
     password: PASSWORD,
     admin: false,
     points: rand(0..30)*500,
-    approved: true
+    approved: rand(0..8)>2
     )
   end
   16.times.each do
@@ -68,7 +68,17 @@ end
           claimed: rand(0..10)>5
       )
   end
-
+# admin user:
+super_user = User.create(
+    first_name: Quiz,
+    last_name: Master,
+    email:"quiz.master@nasa.gov",
+    password: PASSWORD,
+    admin: true,
+    points: 0,
+    approved: true
+    admin: true
+)
 
   users = User.all
   quizzes = Quiz.all
