@@ -38,4 +38,14 @@
       <li><%= question.answers[i].body %></li>
     <% end %>
   </ul>
+  <small>
+    <%= link_to(
+          "Delete",
+          question_path(question),
+          method: :delete,
+          data: {
+            confirm: "Do you want to delete the question??"
+          }
+      ) %>
+  </small>
 <% end %>

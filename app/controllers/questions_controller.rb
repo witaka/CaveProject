@@ -23,7 +23,18 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    question = find_question
+    if question.destroy
+      redirect_to edit_quiz_path question.quiz
+    end
+  end
+
   private
+
+  def find_question
+    Question.find params[:id]
+  end
 
   def question_params
     params.require(:question).permit(:body)
