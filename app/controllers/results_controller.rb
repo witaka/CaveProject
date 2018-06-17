@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
     def show
-        @user = User.last
+        @user = current_user
+        @results = 
     end
 end

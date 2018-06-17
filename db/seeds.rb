@@ -40,6 +40,16 @@ Quiz.destroy_all
 
 end
 
+16.times.each do
+    Result.create(
+        tries: rand(1..5),
+        score: rand(0..100),
+        user: User.sample,
+        quiz: Quiz.sample,
+        claimed: rand(0..10)>5
+    )
+end
+
 15.times.each do
     
         first_name = Faker::Name.first_name
