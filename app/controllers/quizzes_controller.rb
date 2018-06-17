@@ -16,8 +16,9 @@ class QuizzesController < ApplicationController
     end
 
   end
-  
+
   def show
+    @questions = @quiz.questions
   end
 
   def index
@@ -47,7 +48,7 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title,:points,:passmark)
   end
-  
+
   def find_quiz
     @quiz = Quiz.find(params[:id])
     end
