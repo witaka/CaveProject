@@ -1,10 +1,23 @@
 <h1>Leader Board!</h1>
-<ol>
-  <% @users.each do |user| %>
-    <li>
-    <h4>
-      <%= user.full_name  %> has <%= user.points %> points!
-      </h4>
-    </li>
-  <% end %>
-</ol>
+<div class="row">
+<div class="col-6">
+    <ol>
+    <% @users.each do |user| %>
+        <li>
+        <h4>
+        <%= user.full_name  %> has <%= user.points %> points!
+        </h4>
+        </li>
+    <% end %>
+    </ol>
+</div>
+<div class="col-6">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">You</h5>
+            <p class="card-text">Points: 5000</p>
+            <p class="card-text">Badges: 12 </p>         
+        </div>
+    </div>
+</div>
+</div>
