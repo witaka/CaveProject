@@ -1,19 +1,25 @@
 <h1>Results Board for <% @user  %></h1>
 <div class="row">
 
-    <ul>
+    <ul class="list-group">
     <% @results.each do |result| %>
-        <li>
-        <h2>
-        <%= result.quiz.name  %> -- <%= result.score %> %
-        </h2>
-        <h3>Tries: <% result.tries %></h3>
-        <h3>
-        <% result.claimed ? 
-        `#{result.quiz.points} earned` : `#{result.quiz.points} to earn`
-        %>
-        </h3>
+      <% if result.user_id == @user.id %>
+        <li class="list-group-item">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">
+              <%= result.quiz.title  %> -- <%= result.score %> %
+              </h2>
+              <small>Tries: <%= result.tries %></small>
+              <h3 class="card-text">
+              <% result.claimed ?
+              `#{result.quiz.points} earned` : `#{result.quiz.points} to earn`
+              %>
+              </h3>
+            </div>
+          </div>
         </li>
+      <% end %>
     <% end %>
     </ul>
 
