@@ -1,1 +1,10 @@
 <h1>Leader Board!</h1>
+<ol>
+  <% @users.each do |user| %>
+    <li>
+    <h4>
+      <%= user.full_name  %> has <%= user.points %> points!
+      </h4>
+    </li>
+  <% end %>
+</ol>

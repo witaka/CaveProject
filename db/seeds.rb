@@ -51,7 +51,7 @@ end
         email:"#{first_name.downcase}.#{last_name.downcase}@nasa.gov",
         password: PASSWORD,
         admin: false,
-        pts: rand(0..30)*500,
+        points: rand(0..30)*500,
         approved: true
     )
 end
@@ -63,5 +63,6 @@ answers = Answer.all
 puts  "Created #{quizzes.count} quizzes"
 puts  "Created #{questions.count} questions"
 puts  "Created #{answers.count} answers"
+puts  "Created #{users.count} users"
 
 
