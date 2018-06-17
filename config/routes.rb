@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :quizzes
   resources :leaderboard, only: [:index]
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :results
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
 end
