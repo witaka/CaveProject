@@ -1,5 +1,19 @@
-  <ul>
+  <!-- <ul>
     <% @quizzes.each do |quiz| %>
        <%= link_to(quiz.title,quiz_path(quiz)) %>
     <% end %>
-  </ul>
+  </ul> -->
+<ul class="list-inline" style="text-align: center">
+  <% @quizzes.each do |quiz| %>
+    <li class="list-inline-item">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= quiz.title %></h5>
+          <p class="card-text"><%= quiz.points %></p>
+
+          <a href="/quizzes/<%= quiz.id %>" class="btn btn-primary">Take the quiz!</a>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
