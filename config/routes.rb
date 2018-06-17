@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
+
+
+post '/quiz/:id/test', to: 'quizzes#test', as: 'quiz_test'
+
 end

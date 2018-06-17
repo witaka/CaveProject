@@ -15,16 +15,25 @@
     ) %>
 
     <div class="questions-list">
-      <% @questions.each do |question| %>
-        <div>
-          <strong>Q:</strong> <%= question.body %>
-        </div>
-        <% question.answers.shuffle.each do |answer| %>
-          <div class="form-check form-check">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions<%= question.id %>" id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1"><%= answer.body %></label>
-          </div>
-        <% end %>
-      <% end %>
+
+    <%= form_for :result, url: user_results_path(current_user.id) do |f| %>
+          <%= f.hidden_field  :questions_number,  :value =>  @questions.count %> 
+          <%= f.hidden_field  :quiz_passmark,  :value =>  @quiz.passmark %>         
+          <% @questions.each do |question| %>
+            <%= f.hidden_field  :quiz,  :value =>  question.quiz_id %>
+            <div>
+              <strong>Q:</strong> <%= question.body %>
+            </div>
+            <% question.answers.shuffle.each do |answer| %>
+              <div class="form-check form-check">
+                   <%= f.radio_button :"#{question.id}", "#{answer.correct}" %> 
+                   <%= label :"#{question.id}", "#{answer.body}" %>
+             </div>
+            <% end %>
+          <% end %>
+          <%= f.submit 'Submit' %>
+       <% end %>
     </div>
 </div>
+
+
