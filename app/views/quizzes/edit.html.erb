@@ -30,3 +30,12 @@
     <button class="btn btn-primary" id="btn-add-question">Add Question</button>
   </div>
 </div>
+
+<% @questions.each do |question| %>
+  <h5><%= question.body %></h5>
+  <ul>
+    <% for i in 0..3 %>
+      <li><%= question.answers[i].body %></li>
+    <% end %>
+  </ul>
+<% end %>

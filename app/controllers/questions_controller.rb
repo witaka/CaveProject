@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
 
     question = Question.new question_params
     question.quiz = Quiz.find params[:quiz_id].to_i
+    question.answers = answers
 
     if question.save
       redirect_to edit_quiz_path params[:quiz_id].to_i

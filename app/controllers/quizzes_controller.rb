@@ -25,8 +25,9 @@ class QuizzesController < ApplicationController
   end
 
   def edit
-    @question = Question.new
     @quiz = find_quiz
+    @question = Question.new
+    @questions = @quiz.questions
   end
 
   def update
