@@ -90,5 +90,3 @@ puts  "Created #{questions.count} questions"
 puts  "Created #{answers.count} answers"
 puts  "Created #{users.count} users"
 puts  "Created #{results.count} results"
-
-

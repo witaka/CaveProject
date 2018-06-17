@@ -23,10 +23,7 @@ class UsersController < ApplicationController
   
   private
   
-  def toggle_approved!
-    @user = current_user 
-    user.update approved: !approved 
-  end
+  
   def user_params
     params.require(:user).permit(
       :first_name, :last_name, :email,
