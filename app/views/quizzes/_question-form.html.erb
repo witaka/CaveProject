@@ -8,7 +8,8 @@
   <input name="answer3" id="answer3"> <br>
   <label for="answer4" style="color: red;"> Fake Answer 3</label>
   <input name="answer4" id="answer4"> <br>
-  <%= f.button :submit %>
+  <input type="hidden" name="quiz_id" value="<%= @quiz.id %>">
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
 <form>
