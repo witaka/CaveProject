@@ -1,2 +1,51 @@
+<div class="modal" tabindex="-1" role="dialog" id="question-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add a New Question!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'question-form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <h1>Edit Quiz</h1>
 <%= render "form" %>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <h1 class="text-center"> Questions </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-center">
+    <button class="btn btn-primary" id="btn-add-question">Add Question</button>
+  </div>
+</div>
+
+<% @questions.each do |question| %>
+  <h5><%= question.body %></h5>
+  <ul>
+    <% for i in 0..3 %>
+      <li><%= question.answers[i].body %></li>
+    <% end %>
+  </ul>
+  <small>
+    <%= link_to(
+          "Delete",
+          question_path(question),
+          method: :delete,
+          data: {
+            confirm: "Do you want to delete the question??"
+          }
+      ) %>
+  </small>
+<% end %>

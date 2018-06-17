@@ -10,14 +10,15 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
 
     if @quiz.save
-      redirect_to quiz_path(@quiz)
+      redirect_to edit_quiz_path(@quiz)
     else
       render :new
     end
 
   end
-  
+
   def show
+    @questions = @quiz.questions
   end
 
   def index
@@ -25,6 +26,9 @@ class QuizzesController < ApplicationController
   end
 
   def edit
+    @quiz = find_quiz
+    @question = Question.new
+    @questions = @quiz.questions
   end
 
   def update
@@ -44,7 +48,7 @@ class QuizzesController < ApplicationController
   def quiz_params
     params.require(:quiz).permit(:title,:points,:passmark)
   end
-  
+
   def find_quiz
     @quiz = Quiz.find(params[:id])
     end

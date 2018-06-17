@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_16_214457) do
+ActiveRecord::Schema.define(version: 2018_06_17_001211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 2018_06_16_214457) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "results", force: :cascade do |t|
+    t.bigint "quiz_id"
+    t.bigint "user_id"
+    t.integer "tries"
+    t.float "score"
+    t.boolean "claimed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_results_on_quiz_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -54,4 +66,6 @@ ActiveRecord::Schema.define(version: 2018_06_16_214457) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "questions", "quizzes"
+  add_foreign_key "results", "quizzes"
+  add_foreign_key "results", "users"
 end
