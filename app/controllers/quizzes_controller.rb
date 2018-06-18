@@ -51,7 +51,7 @@ class QuizzesController < ApplicationController
 
   private
   def quiz_params
-    params.require(:quiz).permit(:title,:points,:passmark)
+    params.require(:quiz).permit(:title,:points,:passmark,:level)
   end
 
   def find_quiz
