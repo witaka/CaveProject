@@ -1,14 +1,11 @@
-<div><%= @quiz.title %></div>
-<div><%= @quiz.points %></div>
-<div><%= @quiz.passmark %></div>
-<div><%= @quiz.level %></div>
+<% if current_user.admin %>
+  <h2>Quiz</h2>
+  <div>Title: <%= @quiz.title %></div>
+  <div>Points: <%= @quiz.points %></div>
+  <div>Pass Mark: <%= @quiz.passmark %></div>
+  <div>Level: <%= @quiz.level %></div>
 
 <div>
-    <% if @res %>
-      <h2>previous result was: <%=@res.score%>%</h2>
-    <% else %>
-      <h2>First time</h2>      
-    <% end %>
     <%= link_to "Edit", edit_quiz_path(@quiz) %></small>
 
     <%= link_to(
@@ -19,7 +16,12 @@
           confirm: "Do you want to delete quiz?"
         }
     ) %>
-
+<%end%>
+   <% if @res %>
+      <h2> Your previous result was: <%=@res.score.to_i%>%</h2>
+    <% else %>
+      <h2>It first try</h2>      
+    <% end %>
     <div class="questions-list">
 
     <% if @res %>
@@ -38,7 +40,7 @@
               </div>
               <% end %>
             <% end %>
-            <%= f.submit 'Update' %>
+            <%= f.submit 'Update', class: 'btn btn-primary'%>
       <% end %>
 
     <% else %>
@@ -58,7 +60,7 @@
               </div>
               <% end %>
             <% end %>
-            <%= f.submit 'Submit' %>
+            <%= f.submit 'Submit', class: 'btn btn-primary' %>
       <% end %>
 
   <% end %>
