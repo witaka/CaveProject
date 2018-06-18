@@ -1,24 +1,52 @@
 # README
+# Cave of Quizzes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# DO
+## YOU
+### NEED 
+#### GLASSES
+##### MY CHILD 
+###### Version 1.0
 
-Things you may want to cover:
+###### Description
 
-* Ruby version
+Cave of Quizzes is an app allowing the owner (such as a teacher) to easily create multiple choice quizzes which can then be taken by authorized users (such as students).
 
-* System dependencies
+### Owner / Administator:
 
-* Configuration
+When creating a quiz you will be asked to provide:
 
-* Database creation
+ - a minimum pass mark (out of 100)
 
-* Database initialization
+ - a number of points to be awarded if the pass mark is reached or exceeded
+ 
+ - a list of badges to be awarded
 
-* How to run the test suite
+ - as many questions as desired.
 
-* Services (job queues, cache servers, search engines, etc.)
+ - a correct answer and three wrong answers per question
 
-* Deployment instructions
 
-* ...
+### Other users:
+
+ A user must sign up and then be approved by the administator, in order to take quizzes.
+
+ A user can select a quiz on the front page of the app to take the quiz.
+
+ The user's quiz results and points or badges earned are saved.
+
+ A user can see their quiz history.
+
+ A leaderboard of high scores can be viewed by any user.
+
+## Dependencies
+
+* Ruby version 2.5.1
+
+* Rails Gems:
+
+- 
+
+### Known issues in version 1.0
+
+- Try not to use 'back' button in browser 
