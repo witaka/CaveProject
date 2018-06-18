@@ -44,6 +44,11 @@ class QuizzesController < ApplicationController
     redirect_to quizzes_path
   end
 
+  def test
+    @params = params.require(:result)
+    render json:@params 
+  end
+
   private
   def quiz_params
     params.require(:quiz).permit(:title,:points,:passmark)
@@ -51,6 +56,6 @@ class QuizzesController < ApplicationController
 
   def find_quiz
     @quiz = Quiz.find(params[:id])
-    end
-
+  end
+ 
 end
