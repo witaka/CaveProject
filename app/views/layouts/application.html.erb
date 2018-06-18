@@ -18,15 +18,15 @@
           <li class="nav-item">
             <%= link_to 'Quizzes', quizzes_path %>
           </li>
-          <li class="nav-item">
-            <%= link_to 'New Quiz', new_quiz_path %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Leaderboard', leaderboard_index_path %>
-          </li>
-
-
+          <% if current_user.admin %>
+            <li class="nav-item">
+              <%= link_to 'New Quiz', new_quiz_path %>
+            </li>
+          <%end%>
           <% if current_user %>
+            <li class="nav-item">
+              <%= link_to 'Leaderboard', leaderboard_index_path %>
+            </li>
             <li class="nav-item"><a>Welcome, <%= link_to current_user.full_name , user_results_path(current_user) %></a></li>
             <li class="nav-item">
               
