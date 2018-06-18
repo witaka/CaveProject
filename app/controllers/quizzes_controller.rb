@@ -19,6 +19,9 @@ class QuizzesController < ApplicationController
 
   def show
     @questions = @quiz.questions
+
+    # check if we have done this before
+    @res = Result.find_by quiz: @quiz, user: current_user
   end
 
   def index

@@ -1,14 +1,22 @@
-<h1>Results for <% @user %>  </h1>
+<h1>Results for <%= @user.full_name %>  </h1>
 <div class="row">
 
-    
 
-    <div class="card" style="width: 50rem;">
-        <div class="card-body">
-            <h2 class="card-title">Your score: <%= @result.score %> % </h2>
-            <p class="card-text">Points earned: 5000</p>
-            <p class="card-text">Badges earned: _this_badge </p>         
-        </div>
-    </div>
+   <div class="card" style="width: 50rem;">
+       <div class="card-body">
+           <h2 class="card-title">Quiz: <%= @result.quiz.title %></h2>
+           <h2 class="card-title">Your score: <%= @result.score %> % </h2>
+           <p class="card-text">Points earned:
+           <%= @result.claimed ? @result.quiz.points : 0 %>
+           </p>
+           
+           <p class="card-text">Badges earned:
+           <% @result.claimed ? @result.quiz.badges&.last : 0 %>
+           </p>
+           <p class="card-text">Times taken:
+           <%= @result.tries %>
+           </p>          
+       </div>
+   </div>
 
 </div>
