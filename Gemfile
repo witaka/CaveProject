@@ -33,6 +33,9 @@ gem 'hirb'
 gem 'simple_form'
 gem 'cancancan'
 gem 'devise'
+gem 'less-rails-semantic_ui'
+gem 'autoprefixer-rails'
+gem 'therubyracer'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

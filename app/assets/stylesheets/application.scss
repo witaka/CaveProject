@@ -12,27 +12,45 @@
  *
  *= require_tree .
  *= require_self
+ *= require semantic_ui/semantic_ui
  */
 
 @import "bootstrap";
 
+.container {
+  padding-top: 14px;
+}
+
 .navbar a {
   color: white;
-  font-size: 2vw;
+  font-size: 1.7vw;
 }
 
 .navbar a:hover {
   color: #ddd;
-  font-size: 2vw;
+  font-size: 1.7vw;
   text-decoration: none;
 }
 
 .navbar ul li {
-  margin: 0 20px 20px 0;
+  margin: 0 10px 10px 0;
   vertical-align: top;
 }
 
 .navbar ul li a {
-  margin: 0 20px 20px 0;
+  margin: 0 10px 10px 0;
   vertical-align: top;
+}
+
+input[type="text"] {
+  width: 500px;
+}
+input[type="number"] {
+  width: 70px;
+}
+input[type="email"] {
+  width: 500px;
+}
+input[type="password"] {
+  width: 500px;
 }
