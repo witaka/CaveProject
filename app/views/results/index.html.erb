@@ -1,4 +1,4 @@
-<h1>Results Board for <% @user  %></h1>
+<h1>Results Board for <%= @user.full_name  %></h1>
 <div class="row">
 
     <ul class="list-group">
@@ -10,11 +10,12 @@
               <h2 class="card-title">
               <%= result.quiz.title  %> -- <%= result.score %> %
               </h2>
-              <small>Tries: <%= result.tries %></small>
+              <h4>Tries: <%= result.tries %></h4>
               <h3 class="card-text">
-              <% result.claimed ?
-              `#{result.quiz.points} earned` : `#{result.quiz.points} to earn`
-              %>
+              <%= result.quiz.points %>
+              points
+              <%= result.claimed ?
+              "earned!"  : "to earn." %>
               </h3>
             </div>
           </div>
