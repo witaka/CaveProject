@@ -1,4 +1,5 @@
 PASSWORD = "password"
+LEVEL = ["advance", "dintermediate", "beginer"]
 
 User.destroy_all
 Answer.destroy_all
@@ -10,7 +11,8 @@ Result.destroy_all
   quiz = Quiz.create(
     title: Faker::Hobbit.character,
     points: rand(1..3)*500,
-    passmark: rand(50..100)
+    passmark: rand(50..100),
+    level: LEVEL.sample
   )
 
   if quiz.valid?
