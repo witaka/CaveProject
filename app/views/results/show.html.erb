@@ -12,7 +12,10 @@
            
            <p class="card-text">Badges earned:
            <% @result.claimed ? @result.quiz.badges&.last : 0 %>
-           </p>        
+           </p>
+           <p class="card-text">Times taken:
+           <%= @result.tries %>
+           </p>          
        </div>
    </div>
 
