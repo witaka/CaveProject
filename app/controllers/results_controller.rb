@@ -6,14 +6,15 @@ class ResultsController < ApplicationController
         correct_questions = resParams.values.count { |value| value == "true" }
         total_questions = resParams[:questions_number]
         myscore = score(correct_questions,total_questions.to_f)
-        if(myscore>=@quiz.passmark)
-           claimed = "true"
-        else
-           claimed = "false"
+        claimed = false
+        if (myscore>=@quiz.passmark)
+          claimed = true
+          award(@quiz.points, @quiz.badges) 
         end
         result = Result.new user_id: current_user.id, quiz_id: @quiz.id, tries:1, score:myscore, claimed:claimed
            if result.save
-              redirect_to user_result_path(result)    
+              # redirect_to user_result_path(result)
+              render json: result
            else
               redirect_to user_result_path(result)
            end
@@ -24,23 +25,23 @@ class ResultsController < ApplicationController
         @result = Result.find(params[:id])
     end
 
-      def update
-        resParams = params.require(:result)
-        @quiz = Quiz.find(resParams[:quiz])
-        correct_questions = resParams.values.count { |value| value == "true" }
-        total_questions = resParams[:questions_number]
-        myscore = score(correct_questions,total_questions.to_f)
-        if(myscore>=@quiz.passmark)
-           claimed = "true"
-        else
-           claimed = "false"
-        end
-        result = Result.neupdate user_id: current_user.id, quiz_id: @quiz.id, tries:1+1, score:myscore, claimed:claimed
-           if result.update
-              redirect_to user_result_path(result)    
-           else
-              redirect_to user_result_path(result)
-           end
+    def update
+      resParams = params.require(:result)
+      @quiz = Quiz.find(resParams[:quiz])
+      correct_questions = resParams.values.count { |value| value == "true" }
+      total_questions = resParams[:questions_number]
+      myscore = score(correct_questions,total_questions.to_f)
+      if(myscore>=@quiz.passmark)
+          claimed = "true"
+      else
+          claimed = "false"
+      end
+      result = Result.neupdate user_id: current_user.id, quiz_id: @quiz.id, tries:1+1, score:myscore, claimed:claimed
+      if result.update
+        redirect_to user_result_path(result)    
+      else
+        redirect_to user_result_path(result)
+      end
     end
     
     def show
@@ -57,6 +58,21 @@ class ResultsController < ApplicationController
     
    private  
     def score(correct, total)
-        correct/total *100      
+        correct / total * 100      
+    end
+
+    def award(points, badges)
+      user = current_user
+      user.points += points
+      
+      badges.each do |badge|
+        user.badges << badge
+      end
+
+      if user.save
+        puts 'awarded user'
+      else
+        puts 'error in awarding points'
+      end
     end
 end

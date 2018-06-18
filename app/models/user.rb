@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :quzzes, through: :results  
+  has_many :quizzes, through: :results  
   has_secure_password()
   has_many :results, dependent: :destroy
   has_many :badgings, dependent: :destroy
