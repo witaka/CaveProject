@@ -1,5 +1,5 @@
 PASSWORD = "password"
-LEVEL = ["advance", "dintermediate", "beginer"]
+LEVEL = ["advance", "intermediate", "beginner"]
 
 User.destroy_all
 Answer.destroy_all
