@@ -15,15 +15,15 @@
 //= require bootstrap
 //= require rails-ujs
 //= require activestorage
+//= require semantic_ui/semantic_ui
 //= require_tree .
 
-
 // Document ready. Evenet Handlers here.
-$(function () {
+$(function() {
   // Document is ready! Put event listeners here
-  $('#btn-add-question').on('click', (event => {
-    $('#question-modal').toggle();
-  }));
+  $("#btn-add-question").on("click", event => {
+    $("#question-modal").toggle();
+  });
 
   $(".close").on("click", event => {
     $("#question-modal").toggle();
