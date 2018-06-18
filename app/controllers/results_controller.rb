@@ -44,11 +44,19 @@ class ResultsController < ApplicationController
     end
     
     def show
-       @result = @quiz.questions
+
+    end
+    
+    def index
+      @user = current_user
+      @results = Result.order(created_at: :desc)
+      if @user == nil
+        redirect_to new_session_path
+      end
     end
     
    private  
     def score(correct, total)
-        correct/total *100
+        correct/total *100      
     end
 end

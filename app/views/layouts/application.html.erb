@@ -8,26 +8,51 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
       <body>
       <nav class="navbar bg-info ">
-        <div class="nav_left"><%= link_to (image_tag 'logo', size: "140x100" ), root_path %></div></a>
+        <div class="nav_left"><%= link_to (image_tag 'logo', size: "140x100" ), root_path %></div>
         <ul class="nav justify-content-end">
           <li class="nav-item">
             <%= link_to 'Home', root_path %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to 'Quizzes', quizzes_path %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to 'New Quiz', new_quiz_path %>
           </li>
-          <li>
+          <li class="nav-item">
             <%= link_to 'Leaderboard', leaderboard_index_path %>
           </li>
+
+
+          <% if current_user %>
+            <li class="nav-item"><a>Welcome, <%= current_user.full_name %>!</a></li>
+            <li class="nav-item">
+              
+              <%= link_to(
+                "Log Out",
+                session_path,
+                method: :delete,
+                data: {
+                  confirm: "Do you really want to log out?"
+                }
+              ) 
+              %>
+                <% if current_user.admin %>
+                    <li class="nav-item">
+                    <%= link_to 'Admin Dashboard', admin_dashboard_index_path %>
+                    </li>
+                <% end %>
+
+              <% else %>
+                <%= link_to 'Sign Up', new_user_path %>
+                <%= link_to 'Sign In', new_session_path %>
+            </li> 
+          <% end %>
+
         </ul>
+        
       </nav> 
       </head>
 
