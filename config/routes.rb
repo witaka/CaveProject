@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :leaderboard, only: [:index]
 
   resources :users, only: [:new, :create, :update] do
-    resources :results, only: [:index,:create,:update,:show]
+    resources :results, only: [:new, :index,:create,:update,:show,:edit]
   end
 
   resource :session, only: [:new, :create, :destroy]
