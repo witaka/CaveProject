@@ -14,7 +14,7 @@ class ResultsController < ApplicationController
         result = Result.new user_id: current_user.id, quiz_id: @quiz.id, tries:1, score:myscore, claimed:claimed
            if result.save
               # redirect_to user_result_path(result)
-              render json: result
+              redirect_to user_result_path(current_user, result)
            else
               redirect_to user_result_path(result)
            end
@@ -26,26 +26,12 @@ class ResultsController < ApplicationController
     end
 
     def update
-      resParams = params.require(:result)
-      @quiz = Quiz.find(resParams[:quiz])
-      correct_questions = resParams.values.count { |value| value == "true" }
-      total_questions = resParams[:questions_number]
-      myscore = score(correct_questions,total_questions.to_f)
-      if(myscore>=@quiz.passmark)
-          claimed = "true"
-      else
-          claimed = "false"
-      end
-      result = Result.neupdate user_id: current_user.id, quiz_id: @quiz.id, tries:1+1, score:myscore, claimed:claimed
-      if result.update
-        redirect_to user_result_path(result)    
-      else
-        redirect_to user_result_path(result)
-      end
+      render json: params
     end
     
     def show
-
+      @user = current_user
+      @result = Result.find params[:id]
     end
     
     def index

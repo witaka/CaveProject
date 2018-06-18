@@ -4,6 +4,11 @@
 <div><%= @quiz.level %></div>
 
 <div>
+    <% if @res %>
+      <h2>previous result was: <%=@res.score%>%</h2>
+    <% else %>
+      <h2>First time</h2>      
+    <% end %>
     <%= link_to "Edit", edit_quiz_path(@quiz) %></small>
 
     <%= link_to(
@@ -17,23 +22,46 @@
 
     <div class="questions-list">
 
-    <%= form_for :result, url: user_results_path(current_user.id) do |f| %>
-          <%= f.hidden_field  :questions_number,  :value =>  @questions.count %> 
-          <%= f.hidden_field  :quiz_passmark,  :value =>  @quiz.passmark %>         
-          <% @questions.each do |question| %>
-            <%= f.hidden_field  :quiz,  :value =>  question.quiz_id %>
-            <div>
-              <strong>Q:</strong> <%= question.body %>
-            </div>
-            <% question.answers.shuffle.each do |answer| %>
-              <div class="form-check form-check">
-                   <%= f.radio_button :"#{question.id}", "#{answer.correct}" %> 
-                   <%= label :"#{question.id}", "#{answer.body}" %>
-             </div>
+    <% if @res %>
+      <%= form_for :result, url: user_result_path(current_user.id), method: :patch do |f| %>
+            <%= f.hidden_field  :questions_number,  :value =>  @questions.count %> 
+            <%= f.hidden_field  :quiz_passmark,  :value =>  @quiz.passmark %>         
+            <% @questions.each do |question| %>
+              <%= f.hidden_field  :quiz,  :value =>  question.quiz_id %>
+              <div>
+                <strong>Q:</strong> <%= question.body %>
+              </div>
+              <% question.answers.shuffle.each do |answer| %>
+                <div class="form-check form-check">
+                    <%= f.radio_button :"#{question.id}", "#{answer.correct}" %> 
+                    <%= label :"#{question.id}", "#{answer.body}" %>
+              </div>
+              <% end %>
             <% end %>
-          <% end %>
-          <%= f.submit 'Submit' %>
-       <% end %>
+            <%= f.submit 'Update' %>
+      <% end %>
+
+    <% else %>
+
+      <%= form_for :result, url: user_results_path(current_user.id) do |f| %>
+            <%= f.hidden_field  :questions_number,  :value =>  @questions.count %> 
+            <%= f.hidden_field  :quiz_passmark,  :value =>  @quiz.passmark %>         
+            <% @questions.each do |question| %>
+              <%= f.hidden_field  :quiz,  :value =>  question.quiz_id %>
+              <div>
+                <strong>Q:</strong> <%= question.body %>
+              </div>
+              <% question.answers.shuffle.each do |answer| %>
+                <div class="form-check form-check">
+                    <%= f.radio_button :"#{question.id}", "#{answer.correct}" %> 
+                    <%= label :"#{question.id}", "#{answer.body}" %>
+              </div>
+              <% end %>
+            <% end %>
+            <%= f.submit 'Submit' %>
+      <% end %>
+
+  <% end %>
     </div>
 </div>
 
